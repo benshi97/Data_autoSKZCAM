@@ -10,6 +10,7 @@ from datetime import datetime
 from ase.units import mol, kcal, kJ, Hartree, Bohr
 import pandas as pd
 from ase import io
+import re
 
 
 # Some basic conversion factors
@@ -304,7 +305,7 @@ def calculate_skzcam_eint(
     return final_eint
 
 def calculate_eint(
-    filedir, outputname = None, code="mrcc", method="ccsdt", structure_labels=["Molecule-Surface", "Surface", "Molecule"]
+    filedir, outputname = None, code="mrcc", method="ccsdt", structure_labels=["Molecule-Surface", "Surface", "Molecule"], vasp_outcar_label = 'OUTCAR'
 ):
     """
     Function to calculate the Eads value for a given cluster.
@@ -321,6 +322,8 @@ def calculate_eint(
         The type of calculation performed in MRCC or ORCA.
     structure_labels : list
         List of directories containing the output files for the three structures for adsorption energy.
+    vasp_outcar_label : str
+        The name of the VASP OUTCAR file.
         
     Returns
     -------
@@ -358,13 +361,26 @@ def calculate_eint(
             )
 
     elif "vasp" in code:
-        eint = get_energy(filedir + "/{0}/OUTCAR".format(structure_labels[0]),
+        eint = get_energy(filedir + "/{0}/{1}".format(structure_labels[0],vasp_outcar_label),
             code=code,
             method=method,
         )
 
         for structure in structure_labels[1:]:
-            eint -= get_energy(filedir + "/{0}/OUTCAR".format(structure),
+            eint -= get_energy(filedir + "/{0}/{1}".format(structure,vasp_outcar_label),
+                code=code,
+                method=method,
+            )
+    elif 'd4' in code:
+        eint = get_energy(
+            filedir + "/{0}/{1}".format(structure_labels[0],outputname),
+            code=code,
+            method=method,
+        )
+
+        for structure in structure_labels[1:]:
+            eint -= get_energy(
+                filedir + "/{0}/{1}".format(structure,outputname),
                 code=code,
                 method=method,
             )
@@ -523,6 +539,15 @@ def get_energy(filename, method="ccsdt", code="mrcc"):
             return 0.0
         else:
             return float(a[-1].split()[-1])
+        
+    elif code == "dftd4":
+        search_word = "Dispersion energy:"
+        with open(filename, "r", encoding="ISO-8859-1") as fp:
+            a = [line for line in fp if search_word in line]
+        if len(a) == 0:
+            return 0.0
+        else:
+            return float(a[-1].split()[-2])
 
     elif code == "orca":
         if method == "dlpnoccsdt_corr":
