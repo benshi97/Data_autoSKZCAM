@@ -305,7 +305,7 @@ def calculate_skzcam_eint(
     return final_eint
 
 def calculate_eint(
-    filedir, outputname = None, code="mrcc", method="ccsdt", structure_labels=["Molecule-Surface", "Surface", "Molecule"], vasp_outcar_label = 'OUTCAR'
+    filedir, outputname = None, code="mrcc", method="ccsdt", structure_labels=["Molecule-Surface", "Surface", "Molecule"], vasp_outcar_label = 'OUTCAR', num_monomers = 1
 ):
     """
     Function to calculate the Eads value for a given cluster.
@@ -324,6 +324,8 @@ def calculate_eint(
         List of directories containing the output files for the three structures for adsorption energy.
     vasp_outcar_label : str
         The name of the VASP OUTCAR file.
+    num_monomers : int
+        The number of monomers in the cluster.
         
     Returns
     -------
@@ -339,12 +341,18 @@ def calculate_eint(
             method=method,
         )
 
-        for structure in structure_labels[1:]:
+        for structure in structure_labels[1:-1]:
             eint -= get_energy(
                 filedir + "/{0}/{1}.mrcc.out".format(structure,outputname),
                 code=code,
                 method=method,
             )
+
+        eint -= get_energy(
+            filedir + "/{0}/{1}.mrcc.out".format(structure_labels[-1],outputname),
+            code=code,
+            method=method,
+        )*num_monomers
 
     elif "orca" in code:
         eint = get_energy(
@@ -353,12 +361,18 @@ def calculate_eint(
             method=method,
         )
 
-        for structure in structure_labels[1:]:
+        for structure in structure_labels[1:-1]:
             eint -= get_energy(
                 filedir + "/{0}/{1}.orca.out".format(structure,outputname),
                 code=code,
                 method=method,
             )
+
+        eint -= get_energy(
+            filedir + "/{0}/{1}.orca.out".format(structure_labels[-1],outputname),
+            code=code,
+            method=method,
+        )*num_monomers
 
     elif "vasp" in code:
         eint = get_energy(filedir + "/{0}/{1}".format(structure_labels[0],vasp_outcar_label),
@@ -366,26 +380,38 @@ def calculate_eint(
             method=method,
         )
 
-        for structure in structure_labels[1:]:
+        for structure in structure_labels[1:-1]:
             eint -= get_energy(filedir + "/{0}/{1}".format(structure,vasp_outcar_label),
                 code=code,
                 method=method,
             )
+        
+        eint -= get_energy(filedir + "/{0}/{1}".format(structure_labels[-1],vasp_outcar_label),
+            code=code,
+            method=method,
+        )*num_monomers
+
     elif 'd4' in code:
         eint = get_energy(
-            filedir + "/{0}/{1}".format(structure_labels[0],outputname),
+            filedir + "/{0}/{1}".format(structure_labels[0],vasp_outcar_label),
             code=code,
             method=method,
         )
 
-        for structure in structure_labels[1:]:
+        for structure in structure_labels[1:-1]:
             eint -= get_energy(
-                filedir + "/{0}/{1}".format(structure,outputname),
+                filedir + "/{0}/{1}".format(structure,vasp_outcar_label),
                 code=code,
                 method=method,
             )
 
-    return eint
+        eint -= get_energy(
+            filedir + "/{0}/{1}".format(structure_labels[-1],vasp_outcar_label),
+            code=code,
+            method=method,
+        )*num_monomers
+
+    return eint/num_monomers
 
 
 def get_energy(filename, method="ccsdt", code="mrcc"):
