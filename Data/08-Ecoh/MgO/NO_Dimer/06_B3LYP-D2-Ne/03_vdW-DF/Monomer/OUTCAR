@@ -1,8 +1,8 @@
- vasp.6.3.0 20Jan22 (build Aug 21 2024 11:13:42) complex                         
- executed on        HPECrayEX_GCC date 2024.08.22  22:23:52
- running  384 mpi-ranks, with    1 threads/rank
- distrk:  each k-point on  384 cores,    1 groups
- distr:  one band on NCORE=   8 cores,   48 groups
+ vasp.6.3.0 20Jan22 (build Aug 21 2024 11:13:42) gamma-only                      
+ executed on        HPECrayEX_GCC date 2024.08.24  13:47:04
+ running  256 mpi-ranks, with    1 threads/rank
+ distrk:  each k-point on  256 cores,    1 groups
+ distr:  one band on NCORE=   8 cores,   32 groups
 
 
 --------------------------------------------------------------------------------------------------------
@@ -36,7 +36,7 @@
    LASPH = .TRUE.
    LREAL = .FALSE.
    ISPIN = 2
-   MAGMOM = 1.0 1.0 0.0 0.0
+   MAGMOM = 1.0 0.0
    NELM = 200
    NELMIN = 8
    NCORE = 8
@@ -233,17 +233,17 @@ NOSYMM: (Re-)initialisation of all symmetry stuff for point group C_1.
 
 Automatic generation of k-mesh.
  Grid dimensions read from file:
- generate k-points for:    2    2    1
+ generate k-points for:    1    1    1
 
  Generating k-lattice:
 
   Cartesian coordinates                     Fractional coordinates (reciprocal lattice)
-     0.033333333  0.000000000  0.000000000     0.500000000  0.000000000  0.000000000
-     0.000000000  0.033333333  0.000000000     0.000000000  0.500000000  0.000000000
+     0.066666667  0.000000000  0.000000000     1.000000000  0.000000000  0.000000000
+     0.000000000  0.066666667  0.000000000     0.000000000  1.000000000  0.000000000
      0.000000000  0.000000000  0.061829062     0.000000000  0.000000000  1.000000000
 
   Length of vectors
-     0.033333333  0.033333333  0.061829062
+     0.066666667  0.066666667  0.061829062
 
   Shift w.r.t. Gamma in fractional coordinates (k-lattice)
      0.000000000  0.000000000  0.000000000
@@ -252,33 +252,24 @@ Automatic generation of k-mesh.
  Subroutine IBZKPT returns following result:
  ===========================================
  
- Found      4 irreducible k-points:
+ Found      1 irreducible k-points:
  
  Following reciprocal coordinates:
             Coordinates               Weight
   0.000000  0.000000  0.000000      1.000000
-  0.500000  0.000000  0.000000      1.000000
-  0.000000  0.500000  0.000000      1.000000
-  0.500000  0.500000  0.000000      1.000000
  
  Following cartesian coordinates:
             Coordinates               Weight
   0.000000  0.000000  0.000000      1.000000
-  0.033333  0.000000  0.000000      1.000000
-  0.000000  0.033333  0.000000      1.000000
-  0.033333  0.033333  0.000000      1.000000
  
  
  Subroutine IBZKPT_HF returns following result:
  ==============================================
  
- Found      4 k-points in 1st BZ
- the following      4 k-points will be used (e.g. in the exchange kernel)
+ Found      1 k-points in 1st BZ
+ the following      1 k-points will be used (e.g. in the exchange kernel)
  Following reciprocal coordinates:   # in IRBZ
-  0.000000  0.000000  0.000000    0.25000000   1 t-inv F
-  0.500000  0.000000  0.000000    0.25000000   2 t-inv F
-  0.000000  0.500000  0.000000    0.25000000   3 t-inv F
-  0.500000  0.500000  0.000000    0.25000000   4 t-inv F
+  0.000000  0.000000  0.000000    1.00000000   1 t-inv F
 
 
 --------------------------------------------------------------------------------------------------------
@@ -287,7 +278,7 @@ Automatic generation of k-mesh.
 
 
  Dimension of arrays:
-   k-points           NKPTS =      4   k-points in BZ     NKDIM =      4   number of bands    NBANDS=     48
+   k-points           NKPTS =      1   k-points in BZ     NKDIM =      1   number of bands    NBANDS=     32
    number of dos      NEDOS =    301   number of ions     NIONS =      2
    non local maximal  LDIM  =      4   non local SUM 2l+1 LMDIM =      8
    total plane-waves  NPLWV = ******
@@ -318,16 +309,10 @@ Automatic generation of k-mesh.
 
 
  k-points in units of 2pi/SCALE and weight: pymatgen v2020.8.13 with grid density = 
-   0.00000000  0.00000000  0.00000000       0.250
-   0.03333333  0.00000000  0.00000000       0.250
-   0.00000000  0.03333333  0.00000000       0.250
-   0.03333333  0.03333333  0.00000000       0.250
+   0.00000000  0.00000000  0.00000000       1.000
 
  k-points in reciprocal lattice and weights: pymatgen v2020.8.13 with grid density = 
-   0.00000000  0.00000000  0.00000000       0.250
-   0.50000000  0.00000000  0.00000000       0.250
-   0.00000000  0.50000000  0.00000000       0.250
-   0.50000000  0.50000000  0.00000000       0.250
+   0.00000000  0.00000000  0.00000000       1.000
 
  position of ions in fractional coordinates (direct lattice) 
    0.50000000  0.50000000  0.46371797
@@ -340,6 +325,7 @@ Automatic generation of k-mesh.
 
 
 --------------------------------------------------------------------------------------------------------
+
 
 --------------------------------------- Iteration      FINAL  ---------------------------------------
 
@@ -383,7 +369,7 @@ Automatic generation of k-mesh.
    N        1.230          1.397
    O        0.700          1.342
 
-  vdW correction parametrized for the method        
+  vdW correction parametrized for the method          
 
   IVDW =   1
   VDW_RADIUS =    50.000 A
@@ -394,7 +380,7 @@ Automatic generation of k-mesh.
 
   Number of pair interactions contributing to vdW energy:     427
   Edisp (eV):   -0.00006
-    FORVDW:  cpu time      0.0014: real time      0.0014
+    FORVDW:  cpu time      0.0008: real time      0.0008
 
  VOLUME and BASIS-vectors are now :
  -----------------------------------------------------------------------------
@@ -412,18 +398,18 @@ Automatic generation of k-mesh.
  FORCES acting on ions:
     Electron-Ion                     Ewald-Force                    Non-Local-Force
  -----------------------------------------------------------------------------------------------
-   -.726E-04 0.719E-04 0.270E+03   -.706E-06 -.212E-05 -.313E+03   -.190E-04 -.460E-04 0.412E+02
-   0.625E-04 0.508E-04 -.254E+03   0.706E-06 0.212E-05 0.313E+03   -.435E-04 -.377E-04 -.539E+02
+   -.237E-04 0.189E-04 0.270E+03   -.706E-06 -.212E-05 -.313E+03   0.203E-04 0.652E-05 0.412E+02
+   -.263E-04 0.327E-06 -.254E+03   0.706E-06 0.212E-05 0.313E+03   0.303E-04 0.113E-04 -.539E+02
  -----------------------------------------------------------------------------------------------
-   -.102E-04 0.123E-03 0.162E+02   -.315E-16 -.132E-16 0.000E+00   -.625E-04 -.837E-04 -.127E+02
+   -.500E-04 0.193E-04 0.162E+02   -.315E-16 -.132E-16 0.000E+00   0.506E-04 0.178E-04 -.127E+02
 
 
  POSITION                                       TOTAL-FORCE (eV/Angst)
  -----------------------------------------------------------------------------------
-      7.50000      7.50000      7.50000        -0.000054      0.000004      1.695109
-      7.50000      7.50000      8.67362         0.000054     -0.000004     -1.695109
+      7.50000      7.50000      7.50000        -0.000005      0.000004      1.695020
+      7.50000      7.50000      8.67362         0.000005     -0.000004     -1.695020
  -----------------------------------------------------------------------------------
-    total drift:                               -0.000082      0.000029      0.002090
+    total drift:                                0.000005      0.000039      0.004897
 
 
 --------------------------------------------------------------------------------------------------------
@@ -432,50 +418,50 @@ Automatic generation of k-mesh.
 
   FREE ENERGIE OF THE ION-ELECTRON SYSTEM (eV)
   ---------------------------------------------------
-  free  energy   TOTEN  =       -15.94951435 eV
+  free  energy   TOTEN  =       -15.95455466 eV
 
-  energy  without entropy=      -15.94951435  energy(sigma->0) =      -15.94951435
+  energy  without entropy=      -15.95455466  energy(sigma->0) =      -15.95455466
 
-
-
---------------------------------------------------------------------------------------------------------
-
-
-    POTLOK:  cpu time      0.7629: real time      0.7634
 
 
 --------------------------------------------------------------------------------------------------------
 
 
-     LOOP+:  cpu time   2249.7133: real time   2251.3101
+    POTLOK:  cpu time      0.7501: real time      0.7502
+
+
+--------------------------------------------------------------------------------------------------------
+
+
+     LOOP+:  cpu time    118.5252: real time    118.6359
     4ORBIT:  cpu time      0.0000: real time      0.0000
 
- total amount of memory used by VASP MPI-rank0   271706. kBytes
+ total amount of memory used by VASP MPI-rank0   184928. kBytes
 =======================================================================
 
    base      :      30000. kBytes
-   nonl-proj :       8277. kBytes
-   fftplans  :      15816. kBytes
+   nonl-proj :       1213. kBytes
+   fftplans  :      11180. kBytes
    grid      :      25624. kBytes
-   one-center:          6. kBytes
+   one-center:          3. kBytes
    HF        :          4. kBytes
-   nonlr-proj:        104. kBytes
-   wavefun   :       5859. kBytes
-   fock_wrk  :     186016. kBytes
+   nonlr-proj:         12. kBytes
+   wavefun   :        729. kBytes
+   fock_wrk  :     116163. kBytes
 
   
   
  General timing and accounting informations for this job:
  ========================================================
   
-                  Total CPU time used (sec):     2277.180
-                            User time (sec):     2261.005
-                          System time (sec):       16.175
-                         Elapsed time (sec):     2288.426
+                  Total CPU time used (sec):      133.614
+                            User time (sec):      130.739
+                          System time (sec):        2.875
+                         Elapsed time (sec):      139.223
   
-                   Maximum memory used (kb):      477276.
+                   Maximum memory used (kb):      361684.
                    Average memory used (kb):          N/A
   
-                          Minor page faults:      1984534
-                          Major page faults:         1163
-                 Voluntary context switches:        16459
+                          Minor page faults:       261259
+                          Major page faults:         1237
+                 Voluntary context switches:         5997

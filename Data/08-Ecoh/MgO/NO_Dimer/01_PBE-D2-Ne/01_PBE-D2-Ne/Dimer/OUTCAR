@@ -1,8 +1,8 @@
- vasp.6.3.0 20Jan22 (build Aug 21 2024 11:13:42) complex                         
- executed on        HPECrayEX_GCC date 2024.08.22  13:22:49
- running  384 mpi-ranks, with    1 threads/rank
- distrk:  each k-point on  384 cores,    1 groups
- distr:  one band on NCORE=   8 cores,   48 groups
+ vasp.6.3.0 20Jan22 (build Aug 21 2024 11:13:42) gamma-only                      
+ executed on        HPECrayEX_GCC date 2024.08.24  13:16:16
+ running  256 mpi-ranks, with    1 threads/rank
+ distrk:  each k-point on  256 cores,    1 groups
+ distr:  one band on NCORE=   8 cores,   32 groups
 
 
 --------------------------------------------------------------------------------------------------------
@@ -29,8 +29,7 @@
    PREC = Accurate
    LASPH = .TRUE.
    LREAL = .FALSE.
-   ISPIN = 2
-   MAGMOM = 0.0 0.0 0.0 0.0
+   ISPIN = 1
    NELM = 200
    NELMIN = 8
    NCORE = 8
@@ -223,17 +222,17 @@ NOSYMM: (Re-)initialisation of all symmetry stuff for point group C_1.
 
 Automatic generation of k-mesh.
  Grid dimensions read from file:
- generate k-points for:    2    2    1
+ generate k-points for:    1    1    1
 
  Generating k-lattice:
 
   Cartesian coordinates                     Fractional coordinates (reciprocal lattice)
-     0.029855723  0.000000000  0.000000000     0.500000000  0.000000000  0.000000000
-     0.000000000  0.029855726  0.000000000     0.000000000  0.500000000  0.000000000
+     0.059711445  0.000000000  0.000000000     1.000000000  0.000000000  0.000000000
+     0.000000000  0.059711452  0.000000000     0.000000000  1.000000000  0.000000000
      0.000000000  0.000000000  0.061908572     0.000000000  0.000000000  1.000000000
 
   Length of vectors
-     0.029855723  0.029855726  0.061908572
+     0.059711445  0.059711452  0.061908572
 
   Shift w.r.t. Gamma in fractional coordinates (k-lattice)
      0.000000000  0.000000000  0.000000000
@@ -242,21 +241,15 @@ Automatic generation of k-mesh.
  Subroutine IBZKPT returns following result:
  ===========================================
  
- Found      4 irreducible k-points:
+ Found      1 irreducible k-points:
  
  Following reciprocal coordinates:
             Coordinates               Weight
   0.000000  0.000000  0.000000      1.000000
-  0.500000  0.000000  0.000000      1.000000
-  0.000000  0.500000  0.000000      1.000000
-  0.500000  0.500000  0.000000      1.000000
  
  Following cartesian coordinates:
             Coordinates               Weight
   0.000000  0.000000  0.000000      1.000000
-  0.029856  0.000000  0.000000      1.000000
-  0.000000  0.029856  0.000000      1.000000
-  0.029856  0.029856  0.000000      1.000000
  
 
 
@@ -266,7 +259,7 @@ Automatic generation of k-mesh.
 
 
  Dimension of arrays:
-   k-points           NKPTS =      4   k-points in BZ     NKDIM =      4   number of bands    NBANDS=     48
+   k-points           NKPTS =      1   k-points in BZ     NKDIM =      1   number of bands    NBANDS=     32
    number of dos      NEDOS =    301   number of ions     NIONS =      4
    non local maximal  LDIM  =      4   non local SUM 2l+1 LMDIM =      8
    total plane-waves  NPLWV = ******
@@ -297,16 +290,10 @@ Automatic generation of k-mesh.
 
 
  k-points in units of 2pi/SCALE and weight: pymatgen v2020.8.13 with grid density = 
-   0.00000000  0.00000000  0.00000000       0.250
-   0.02985572  0.00000000  0.00000000       0.250
-   0.00000000  0.02985573  0.00000000       0.250
-   0.02985572  0.02985573  0.00000000       0.250
+   0.00000000  0.00000000  0.00000000       1.000
 
  k-points in reciprocal lattice and weights: pymatgen v2020.8.13 with grid density = 
-   0.00000000  0.00000000  0.00000000       0.250
-   0.50000000  0.00000000  0.00000000       0.250
-   0.00000000  0.50000000  0.00000000       0.250
-   0.50000000  0.50000000  0.00000000       0.250
+   0.00000000  0.00000000  0.00000000       1.000
 
  position of ions in fractional coordinates (direct lattice) 
    0.45705463  0.45705471  0.46449268
@@ -323,6 +310,7 @@ Automatic generation of k-mesh.
 
 
 --------------------------------------------------------------------------------------------------------
+
 
 --------------------------------------- Iteration      FINAL  ---------------------------------------
 
@@ -377,25 +365,25 @@ Automatic generation of k-mesh.
 
   Number of pair interactions contributing to vdW energy:    1098
   Edisp (eV):   -0.01445
-    FORVDW:  cpu time      0.0007: real time      0.0007
+    FORVDW:  cpu time      0.0019: real time      0.0020
 
   FORCE on cell =-STRESS in cart. coord.  units (eV):
   Direction    XX          YY          ZZ          XY          YZ          ZX
   --------------------------------------------------------------------------------------
   Alpha Z     0.43422     0.43422     0.43422
   Ewald     138.45463   138.45393   597.88177   336.12571     0.10250     0.10277
-  Hartree   642.66212   642.66155   751.41516   265.97531    -0.17448    -0.17436
-  E(xc)    -101.21468  -101.21468   -99.05680     0.51116     0.00163     0.00163
-  Local   -1098.74524 -1098.74393 -1603.65191  -612.50416     0.14486     0.14448
-  n-local   -58.62272   -58.62270   -76.27934    -5.00593    -0.01251    -0.01252
-  augment    14.19172    14.19171    12.75789     1.34200    -0.00276    -0.00276
-  Kinetic   462.93069   462.93065   416.21040    13.78307    -0.05980    -0.05981
+  Hartree   642.30970   642.30911   752.83964   272.86492    -0.17955    -0.17942
+  E(xc)    -101.15190  -101.15190   -99.02483     0.61968     0.00149     0.00149
+  Local   -1098.13550 -1098.13415 -1605.63478  -630.30181     0.15995     0.15955
+  n-local   -58.37359   -58.37357   -76.43990    -8.72601    -0.00923    -0.00924
+  augment    14.14160    14.14159    12.77616     2.40956    -0.00375    -0.00375
+  Kinetic   462.13133   462.13126   416.97438    26.95355    -0.07129    -0.07129
   Fock        0.00000     0.00000     0.00000     0.00000     0.00000     0.00000
   vdW         0.05679     0.05679     0.01864     0.05684    -0.00010    -0.00010
   -------------------------------------------------------------------------------------
-  Total       0.14753     0.14753    -0.26998     0.28399    -0.00066    -0.00066
-  in kB       0.05217     0.05217    -0.09548     0.10043    -0.00023    -0.00023
-  external pressure =        0.00 kB  Pullay stress =        0.00 kB
+  Total      -0.13272    -0.13272    -0.17471     0.00244     0.00002     0.00002
+  in kB      -0.04694    -0.04694    -0.06179     0.00086     0.00001     0.00001
+  external pressure =       -0.05 kB  Pullay stress =        0.00 kB
 
 
  VOLUME and BASIS-vectors are now :
@@ -414,22 +402,22 @@ Automatic generation of k-mesh.
  FORCES acting on ions:
     Electron-Ion                     Ewald-Force                    Non-Local-Force
  -----------------------------------------------------------------------------------------------
-   0.635E+02 0.635E+02 0.295E+03   -.618E+02 -.618E+02 -.339E+03   -.172E+01 -.172E+01 0.443E+02
-   -.630E+02 -.630E+02 0.295E+03   0.611E+02 0.611E+02 -.340E+03   0.181E+01 0.181E+01 0.443E+02
-   0.134E+03 0.134E+03 -.281E+03   -.143E+03 -.143E+03 0.340E+03   0.871E+01 0.871E+01 -.591E+02
-   -.134E+03 -.134E+03 -.280E+03   0.143E+03 0.143E+03 0.339E+03   -.883E+01 -.883E+01 -.591E+02
+   0.627E+02 0.627E+02 0.295E+03   -.618E+02 -.618E+02 -.339E+03   -.905E+00 -.905E+00 0.447E+02
+   -.621E+02 -.621E+02 0.295E+03   0.611E+02 0.611E+02 -.340E+03   0.994E+00 0.994E+00 0.447E+02
+   0.134E+03 0.134E+03 -.281E+03   -.143E+03 -.143E+03 0.340E+03   0.923E+01 0.923E+01 -.590E+02
+   -.134E+03 -.134E+03 -.280E+03   0.143E+03 0.143E+03 0.339E+03   -.934E+01 -.934E+01 -.590E+02
  -----------------------------------------------------------------------------------------------
-   0.291E-01 0.291E-01 0.297E+02   0.000E+00 0.284E-13 -.568E-13   -.293E-01 -.293E-01 -.297E+02
+   0.282E-01 0.282E-01 0.286E+02   0.000E+00 0.284E-13 -.568E-13   -.284E-01 -.284E-01 -.286E+02
 
 
  POSITION                                       TOTAL-FORCE (eV/Angst)
  -----------------------------------------------------------------------------------
-      7.65439      7.65439      7.50288         0.038005      0.038004      0.039096
-      9.09054      9.09053      7.50000        -0.038008     -0.038008      0.040248
-      7.50000      7.50000      8.65285        -0.195750     -0.195749     -0.038928
-      9.24721      9.24721      8.64936         0.195753      0.195753     -0.040415
+      7.65439      7.65439      7.50288         0.001244      0.001246     -0.002622
+      9.09054      9.09053      7.50000        -0.001347     -0.001348     -0.001478
+      7.50000      7.50000      8.65285        -0.004488     -0.004486      0.002458
+      9.24721      9.24721      8.64936         0.004591      0.004588      0.001642
  -----------------------------------------------------------------------------------
-    total drift:                               -0.000181     -0.000180      0.000526
+    total drift:                               -0.000174     -0.000190     -0.000787
 
 
 --------------------------------------------------------------------------------------------------------
@@ -438,47 +426,47 @@ Automatic generation of k-mesh.
 
   FREE ENERGIE OF THE ION-ELECTRON SYSTEM (eV)
   ---------------------------------------------------
-  free  energy   TOTEN  =       -25.26962116 eV
+  free  energy   TOTEN  =       -25.13129656 eV
 
-  energy  without entropy=      -25.26962116  energy(sigma->0) =      -25.26962116
+  energy  without entropy=      -25.13082774  energy(sigma->0) =      -25.13106215
 
-
-
---------------------------------------------------------------------------------------------------------
-
-
-    POTLOK:  cpu time      0.4676: real time      0.4680
 
 
 --------------------------------------------------------------------------------------------------------
 
 
-     LOOP+:  cpu time    124.7494: real time    124.9476
+    POTLOK:  cpu time      0.2074: real time      0.2078
+
+
+--------------------------------------------------------------------------------------------------------
+
+
+     LOOP+:  cpu time     10.7710: real time     10.8108
     4ORBIT:  cpu time      0.0000: real time      0.0000
 
- total amount of memory used by VASP MPI-rank0    95865. kBytes
+ total amount of memory used by VASP MPI-rank0    67353. kBytes
 =======================================================================
 
    base      :      30000. kBytes
-   nonl-proj :      10920. kBytes
-   fftplans  :      13028. kBytes
-   grid      :      34612. kBytes
-   one-center:          6. kBytes
-   wavefun   :       7299. kBytes
+   nonl-proj :       1818. kBytes
+   fftplans  :      12104. kBytes
+   grid      :      22977. kBytes
+   one-center:          1. kBytes
+   wavefun   :        453. kBytes
 
   
   
  General timing and accounting informations for this job:
  ========================================================
   
-                  Total CPU time used (sec):      149.927
-                            User time (sec):      149.051
-                          System time (sec):        0.876
-                         Elapsed time (sec):      159.448
+                  Total CPU time used (sec):       27.247
+                            User time (sec):       26.077
+                          System time (sec):        1.170
+                         Elapsed time (sec):       33.620
   
-                   Maximum memory used (kb):      247744.
+                   Maximum memory used (kb):      223704.
                    Average memory used (kb):          N/A
   
-                          Minor page faults:        31616
-                          Major page faults:         1149
-                 Voluntary context switches:         8615
+                          Minor page faults:        28453
+                          Major page faults:         1029
+                 Voluntary context switches:         5674
