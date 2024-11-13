@@ -3,88 +3,82 @@
 ================================================================================
 NAME = orca.inp
 |  1>  ! TightSCF RI-MP2 RIJCOSX SlowConv DIIS
-|  2> %maxcore 75000
+|  2> %maxcore 30000
 |  3> %pal
-|  4> nprocs 16
+|  4> nprocs 6
 |  5> end
 |  6> %method
 |  7> Method hf
 |  8> RI on
 |  9> RunTyp Energy
 | 10> NewNCore O 2 end
-| 11> NewNCore Mg 2 end
+| 11> NewNCore Mg 10 end
 | 12> NewNCore N 2 end
 | 13> end
 | 14> %basis
 | 15> NewGTO Mg
-| 16> "cc-pwCVDZ"
+| 16> "cc-pVDZ"
 | 17> end
-| 18> NewGTO H
+| 18> NewGTO N
 | 19> "aug-cc-pVDZ"
 | 20> end
-| 21> NewGTO N
+| 21> NewGTO O
 | 22> "aug-cc-pVDZ"
 | 23> end
-| 24> NewGTO O
-| 25> "aug-cc-pVDZ"
+| 24> NewAuxCGTO Mg
+| 25> "cc-pVQZ/C"
 | 26> end
-| 27> NewAuxCGTO Mg
-| 28> "AutoAux"
+| 27> NewAuxCGTO N
+| 28> "aug-cc-pVDZ/C"
 | 29> end
-| 30> NewAuxCGTO H
+| 30> NewAuxCGTO O
 | 31> "aug-cc-pVDZ/C"
 | 32> end
-| 33> NewAuxCGTO N
-| 34> "aug-cc-pVDZ/C"
-| 35> end
-| 36> NewAuxCGTO O 
-| 37> "aug-cc-pVDZ/C"
-| 38> end
-| 39> Aux "def2/J"
-| 40> end
-| 41> %scf
-| 42> HFTyp uhf
-| 43> Guess MORead
-| 44> MOInp "orca_svp_start.gbw"
-| 45> SCFMode Direct
-| 46> sthresh 1e-6
-| 47> AutoTRAHIter 60
-| 48> MaxIter 1000
-| 49> end
-| 50> %coords
-| 51> CTyp xyz
-| 52> Mult 2
-| 53> Units angs
-| 54>       Charge 0
-| 55>   coords
-| 56> N                       0.04583789024    0.05708746206    2.36613262733
-| 57> O                      -0.55016709626   -0.52007658419    3.19818813327
-| 58> Mg:                     0.00000000000    0.00000000000   -0.01501621801
-| 59> O:                      2.11772413671   -0.00240454893   -0.00467997933
-| 60> O:                      0.00060823987   -2.11784785727   -0.00335793251
-| 61> O:                     -0.00284172696    2.11794309252   -0.00402873671
-| 62> O:                     -2.11832644729    0.00099453632   -0.00379927356
-| 63> O:                     -0.00080550853   -0.00008156372   -2.15150907677
-| 64>   end
-| 65> endd                         ****END OF INPUT****
+| 33> Aux "def2/J"
+| 34> end
+| 35> %scf
+| 36> HFTyp rhf
+| 37> Guess MORead
+| 38> MOInp "orca_svp_start.gbw"
+| 39> SCFMode Direct
+| 40> sthresh 1e-6
+| 41> AutoTRAHIter 60
+| 42> MaxIter 1000
+| 43> end
+| 44> %coords
+| 45> CTyp xyz
+| 46> Mult 2
+| 47> Units angs
+| 48>       Charge 0
+| 49>   coords
+| 50> N                       0.04583789024    0.05708746206    2.36613262733
+| 51> O                      -0.55016709626   -0.52007658419    3.19818813327
+| 52> Mg:                     0.00000000000    0.00000000000   -0.01501621801
+| 53> O:                      2.11772413671   -0.00240454893   -0.00467997933
+| 54> O:                      0.00060823987   -2.11784785727   -0.00335793251
+| 55> O:                     -0.00284172696    2.11794309252   -0.00402873671
+| 56> O:                     -2.11832644729    0.00099453632   -0.00379927356
+| 57> O:                     -0.00080550853   -0.00008156372   -2.15150907677
+| 58>   end
+| 59> endd                         ****END OF INPUT****
 ================================================================================
 ----------------
 TOTAL SCF ENERGY
 ----------------
 
-Total Energy       :         -129.26707906 Eh           -3517.53605 eV
+Total Energy       :         -129.26707107 Eh           -3517.53583 eV
 
 Components:
 Nuclear Repulsion  :           25.22007153 Eh             686.27304 eV
-Electronic Energy  :         -154.48715060 Eh           -4203.80909 eV
-One Electron Energy:         -226.57950460 Eh           -6165.54177 eV
-Two Electron Energy:           72.09235401 Eh            1961.73269 eV
-Max COSX asymmetry :            0.00000191 Eh               0.00005 eV
+Electronic Energy  :         -154.48714260 Eh           -4203.80887 eV
+One Electron Energy:         -226.57946539 Eh           -6165.54070 eV
+Two Electron Energy:           72.09232279 Eh            1961.73184 eV
+Max COSX asymmetry :            0.00000190 Eh               0.00005 eV
 
 Virial components:
-Potential Energy   :         -258.23597391 Eh           -7026.95809 eV
-Kinetic Energy     :          128.96889485 Eh            3509.42204 eV
-Virial Ratio       :            2.00231206
+Potential Energy   :         -258.23610364 Eh           -7026.96162 eV
+Kinetic Energy     :          128.96903257 Eh            3509.42579 eV
+Virial Ratio       :            2.00231093
 
 --------------------Output has been truncated-------------------------
 
@@ -117,14 +111,15 @@ Virial Ratio       :            2.00231206
 
 
 -----------------------------------------------
- RI-MP2 CORRELATION ENERGY:     -0.326221007 Eh
+ RI-MP2 CORRELATION ENERGY:     -0.326190817 Eh
 -----------------------------------------------
 ---------------------------------------
-MP2 TOTAL ENERGY:     -129.593300070 Eh
+MP2 TOTAL ENERGY:     -129.593261883 Eh
 ---------------------------------------
 
-Maximum memory used throughout the entire MP2-calculation: 90.3 MB
+Maximum memory used throughout the entire MP2-calculation: 91.6 MB
 
 -------------------------   --------------------
-FINAL SINGLE POINT ENERGY      -129.593300069970
+FINAL SINGLE POINT ENERGY      -129.593261882677
 -------------------------   --------------------
+TOTAL RUN TIME: 0 days 0 hours 1 minutes 36 seconds 574 msec

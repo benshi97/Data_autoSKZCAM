@@ -20,6 +20,94 @@ kcalmol_to_meV = kcal / mol * 1000
 kjmol_to_meV = kJ / mol * 1000
 mha_to_meV = Hartree
 
+# Getting the cost of the DFT calculations
+def get_vasp_walltime(filename):
+    """
+    Reads the walltime from the OUTCAR file.
+        
+    Parameters
+    ----------
+    filename : str
+        The location of the 'OUTCAR' file to read from.
+        
+    Returns
+    -------
+    float
+        The walltime in seconds.
+        
+    Notes
+    -----
+    This function reads the 'OUTCAR' file and extracts the total walltime taken by the VASP calculation.
+    """
+
+    f = open(filename)
+    a = f.readlines()
+    # Search for the line with "Elapsed time (sec):" string and get the last column of the line
+    for line in a:
+        if "Elapsed time (sec):" in line:
+            total_time = float(line.split()[-1])
+            break
+    f.close()
+    return total_time
+
+def get_vasp_looptime(filename):
+    """
+    Reads the time for a single loop from the OUTCAR file.
+        
+    Parameters
+    ----------
+    filename : str
+        The location of the 'OUTCAR' file to read from.
+        
+    Returns
+    -------
+    float
+        The walltime in seconds.
+        
+    Notes
+    -----
+    This function reads the 'OUTCAR' file and extracts the time taken for a single SCF loop in a VASP calculation.
+    """
+
+    f = open(filename)
+    a = f.readlines()
+    loop_times = []
+    # Search for the line with "Elapsed time (sec):" string and get the last column of the line
+    for line in a:
+        if "LOOP:" in line:
+            loop_times += [float(line.split()[-1].replace("time", ""))]
+    f.close()
+    return np.mean(loop_times)
+
+
+def get_orca_walltime(filename):
+    """
+    Reads the walltime from the orca.out file.
+        
+    Parameters
+    ----------
+    filename : str
+        The location of the 'orca.out' file to read from.
+   
+   Returns
+    -------
+    float
+        The walltime in seconds.
+        
+    Notes
+    -----
+    This function reads the 'orca.out' file and extracts the start and end time information to calculate the total walltime in seconds taken by the ORCA calculation. The function calculates the time duration between the timestamps found in the file and returns it in seconds.
+    """
+
+    # Get the start and end time from the file
+
+    f = open(filename)
+    line = f.readlines()[-1].split()
+    f.close()
+
+    total_time_seconds = float(line[3])*24*60*60+ float(line[5])*60*60 + float(line[7])*60 + float(line[9])
+    return total_time_seconds
+
 
 def get_mrcc_walltime(filename):
     """
