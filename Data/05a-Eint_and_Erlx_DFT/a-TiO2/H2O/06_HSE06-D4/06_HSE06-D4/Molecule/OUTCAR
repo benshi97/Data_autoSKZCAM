@@ -1,8 +1,8 @@
- vasp.6.3.0 20Jan22 (build Dec 25 2023 18:06:01) complex                         
- executed on        HPECrayEX_GCC date 2024.01.26  09:32:16
- running 1024 mpi-ranks, with    1 threads/rank
- distrk:  each k-point on 1024 cores,    1 groups
- distr:  one band on NCORE=   2 cores,  512 groups
+ vasp.6.3.0 20Jan22 (build Aug 21 2024 11:13:42) complex                         
+ executed on        HPECrayEX_GCC date 2024.11.27  09:55:32
+ running  512 mpi-ranks, with    1 threads/rank
+ distrk:  each k-point on  512 cores,    1 groups
+ distr:  one band on NCORE=  16 cores,   32 groups
 
 
 --------------------------------------------------------------------------------------------------------
@@ -12,7 +12,7 @@
    SYSTEM = TiO2
    ISMEAR = 0
    SIGMA = 0.05
-   EDIFF = 1E-5
+   EDIFF = 1E-4
    ALGO = ALL
    ISTART = 0
    IBRION = -1
@@ -40,7 +40,7 @@
    NKREDY = 3
    NELM = 200
    NELMIN = 8
-   NCORE = 2
+   NCORE = 16
    KPAR = 1
    LWAVE = .FALSE.
    LCHARG = .FALSE.
@@ -166,23 +166,12 @@
  POSCAR:  H  O
   positions in direct lattice
   No initial velocities read in
- -----------------------------------------------------------------------------
-|                                                                             |
-|           W    W    AA    RRRRR   N    N  II  N    N   GGGG   !!!           |
-|           W    W   A  A   R    R  NN   N  II  NN   N  G    G  !!!           |
-|           W    W  A    A  R    R  N N  N  II  N N  N  G       !!!           |
-|           W WW W  AAAAAA  RRRRR   N  N N  II  N  N N  G  GGG   !            |
-|           WW  WW  A    A  R   R   N   NN  II  N   NN  G    G                |
-|           W    W  A    A  R    R  N    N  II  N    N   GGGG   !!!           |
-|                                                                             |
-|     Specifying the vdW parameters                                           |
-|     VDW_S8 = 1.195                                                          |
-|     VDW_A1 = 0.387                                                          |
-|     VDW_A2 = 5.191                                                          |
-|     in the INCAR file will overwrite the defaults for hse06. Please         |
-|     make sure that is what you intended.                                    |
-|                                                                             |
- -----------------------------------------------------------------------------
+ WARNING: Using user supplied parameters
+     VDW_S8 = 1.195
+     VDW_A1 = 0.387
+     VDW_A2 = 5.191
+     because the xc functional is not supported. Required parameters not
+     defined in the INCAR file will be replaced with PBE defaults ones.
 
  exchange correlation table for  LEXCH =        8
    RHO(1)=    0.500       N(1)  =     2000
@@ -194,9 +183,9 @@
 
 
  ion  position               nearest neighbor table
-   1  0.683  0.568  0.806-   3 0.97
-   2  0.683  0.432  0.806-   3 0.97
-   3  0.625  0.500  0.806-   2 0.97   1 0.97
+   1  0.689  0.568  0.807-   3 0.97
+   2  0.689  0.432  0.807-   3 0.97
+   3  0.630  0.500  0.807-   2 0.97   1 0.97
 
 
 IMPORTANT INFORMATION: All symmetrisations will be switched off!
@@ -207,20 +196,20 @@ NOSYMM: (Re-)initialisation of all symmetry stuff for point group C_1.
 
                                      Primitive cell                                     
 
-  volume of cell :    2875.9226
+  volume of cell :    2859.6974
 
   direct lattice vectors                    reciprocal lattice vectors
-    10.237069764  0.000000000  0.000000000     0.097684203 -0.000000000  0.000000000
-     0.000000000 11.308341211  0.000000000     0.000000000  0.088430299  0.000000000
-     0.000000000  0.000000000 24.842918924     0.000000000  0.000000000  0.040252919
+    10.250982430  0.000000000  0.000000000     0.097551626 -0.000000000  0.000000000
+     0.000000000 11.253211329  0.000000000     0.000000000  0.088863523  0.000000000
+     0.000000000  0.000000000 24.790090512     0.000000000  0.000000000  0.040338699
 
   length of vectors
-    10.237069764 11.308341211 24.842918924     0.097684203  0.088430299  0.040252919
+    10.250982430 11.253211329 24.790090512     0.097551626  0.088863523  0.040338699
 
   position of ions in fractional coordinates (direct lattice)
-     0.682551998  0.567856776  0.805988295
-     0.682547259  0.432147194  0.805989075
-     0.624624602  0.499998776  0.805793230
+     0.688507698  0.568139000  0.806541063
+     0.688506640  0.431862225  0.806541358
+     0.630461152  0.499999401  0.806919063
 
   ion indices of the primitive-cell ions
    primitive index   ion index
@@ -241,12 +230,12 @@ Automatic generation of k-mesh.
  Generating k-lattice:
 
   Cartesian coordinates                     Fractional coordinates (reciprocal lattice)
-     0.032561401 -0.000000000  0.000000000     0.333333333 -0.000000000  0.000000000
-     0.000000000  0.029476766  0.000000000     0.000000000  0.333333333  0.000000000
-     0.000000000  0.000000000  0.040252919     0.000000000  0.000000000  1.000000000
+     0.032517209 -0.000000000  0.000000000     0.333333333 -0.000000000  0.000000000
+     0.000000000  0.029621174  0.000000000     0.000000000  0.333333333  0.000000000
+     0.000000000  0.000000000  0.040338699     0.000000000  0.000000000  1.000000000
 
   Length of vectors
-     0.032561401  0.029476766  0.040252919
+     0.032517209  0.029621174  0.040338699
 
   Shift w.r.t. Gamma in fractional coordinates (k-lattice)
      0.000000000  0.000000000  0.000000000
@@ -268,10 +257,10 @@ Automatic generation of k-mesh.
  Following cartesian coordinates:
             Coordinates               Weight
   0.000000  0.000000  0.000000      1.000000
-  0.032561  0.000000  0.000000      2.000000
-  0.000000  0.029477  0.000000      2.000000
-  0.032561  0.029477  0.000000      2.000000
-  0.032561 -0.029477  0.000000      2.000000
+  0.032517  0.000000  0.000000      2.000000
+  0.000000  0.029621  0.000000      2.000000
+  0.032517  0.029621  0.000000      2.000000
+  0.032517 -0.029621  0.000000      2.000000
  
  
  Subroutine IBZKPT_HF returns following result:
@@ -297,17 +286,17 @@ Automatic generation of k-mesh.
 
 
  Dimension of arrays:
-   k-points           NKPTS =      5   k-points in BZ     NKDIM =      9   number of bands    NBANDS=    512
+   k-points           NKPTS =      5   k-points in BZ     NKDIM =      9   number of bands    NBANDS=     32
    number of dos      NEDOS =    301   number of ions     NIONS =      3
    non local maximal  LDIM  =      4   non local SUM 2l+1 LMDIM =      8
    total plane-waves  NPLWV = 537600
-   max r-space proj   IRMAX =      1   max aug-charges    IRDMAX=   2624
+   max r-space proj   IRMAX =      1   max aug-charges    IRDMAX=   2638
    dimension x,y,z NGX =    60 NGY =   64 NGZ =  140
    dimension x,y,z NGXF=   120 NGYF=  128 NGZF=  280
    support grid    NGXF=   120 NGYF=  128 NGZF=  280
    ions per type =               2   1
-   NGX,Y,Z   is equivalent  to a cutoff of   9.74,  9.41,  9.37 a.u.
-   NGXF,Y,Z  is equivalent  to a cutoff of  19.49, 18.82, 18.74 a.u.
+   NGX,Y,Z   is equivalent  to a cutoff of   9.73,  9.45,  9.39 a.u.
+   NGXF,Y,Z  is equivalent  to a cutoff of  19.46, 18.91, 18.78 a.u.
 
  SYSTEM =  TiO2                                    
  POSCAR =   H  O                                   
@@ -316,23 +305,23 @@ Automatic generation of k-mesh.
 
 
   energy-cutoff  :      520.00
-  volume of cell :     2875.92
+  volume of cell :     2859.70
       direct lattice vectors                 reciprocal lattice vectors
-    10.237069764  0.000000000  0.000000000     0.097684203 -0.000000000  0.000000000
-     0.000000000 11.308341211  0.000000000     0.000000000  0.088430299  0.000000000
-     0.000000000  0.000000000 24.842918924     0.000000000  0.000000000  0.040252919
+    10.250982430  0.000000000  0.000000000     0.097551626 -0.000000000  0.000000000
+     0.000000000 11.253211329  0.000000000     0.000000000  0.088863523  0.000000000
+     0.000000000  0.000000000 24.790090512     0.000000000  0.000000000  0.040338699
 
   length of vectors
-    10.237069764 11.308341211 24.842918924     0.097684203  0.088430299  0.040252919
+    10.250982430 11.253211329 24.790090512     0.097551626  0.088863523  0.040338699
 
 
 
  k-points in units of 2pi/SCALE and weight: pymatgen v2020.8.13 with grid density = 
    0.00000000  0.00000000  0.00000000       0.111
-   0.03256140  0.00000000  0.00000000       0.222
-   0.00000000  0.02947677  0.00000000       0.222
-   0.03256140  0.02947677  0.00000000       0.222
-   0.03256140 -0.02947677  0.00000000       0.222
+   0.03251721  0.00000000  0.00000000       0.222
+   0.00000000  0.02962117  0.00000000       0.222
+   0.03251721  0.02962117  0.00000000       0.222
+   0.03251721 -0.02962117  0.00000000       0.222
 
  k-points in reciprocal lattice and weights: pymatgen v2020.8.13 with grid density = 
    0.00000000  0.00000000  0.00000000       0.111
@@ -342,14 +331,14 @@ Automatic generation of k-mesh.
    0.33333333 -0.33333333  0.00000000       0.222
 
  position of ions in fractional coordinates (direct lattice) 
-   0.68255200  0.56785678  0.80598830
-   0.68254726  0.43214719  0.80598908
-   0.62462460  0.49999878  0.80579323
+   0.68850770  0.56813900  0.80654106
+   0.68850664  0.43186223  0.80654136
+   0.63046115  0.49999940  0.80691906
 
  position of ions in cartesian coordinates  (Angst):
-   6.98733242  6.42151819 20.02310187
-   6.98728391  4.88686792 20.02312125
-   6.39432563  5.65415677 20.01825589
+   7.05788032  6.39338823 19.99422596
+   7.05786946  4.85983688 19.99423328
+   6.46284619  5.62659893 20.00359661
 
 
 
@@ -388,57 +377,57 @@ Automatic generation of k-mesh.
 --------------------OUTCAR has been truncated-------------------------
 
 
-    FORVDW:  cpu time      0.0022: real time      0.0023
+    FORVDW:  cpu time      0.0049: real time      0.0052
 
   FORCE on cell =-STRESS in cart. coord.  units (eV):
   Direction    XX          YY          ZZ          XY          YZ          ZX
   --------------------------------------------------------------------------------------
-  Alpha Z     0.07798     0.07798     0.07798
-  Ewald      92.21949   136.01170  -103.54554    -0.00374    -0.00158     0.54341
-  Hartree   220.42752   219.09518    80.69339     0.00033    -0.00027     0.09659
-  E(xc)     -27.35784   -27.24935   -27.53107     0.00001    -0.00000     0.00142
-  Local    -401.76149  -428.70832   -86.93717     0.00123     0.00137    -0.47046
-  n-local   -26.05020   -25.50951   -25.47410     0.00038     0.00000    -0.00472
-  augment     6.31853     5.31400     7.76378     0.00002     0.00003    -0.01191
-  Kinetic   149.28322   133.99329   168.46738    -0.00045     0.00044    -0.15715
-  Fock      -13.56249   -13.59616   -13.55352     0.00010     0.00000     0.00003
-  vdW         0.00108     0.00115    -0.00000    -0.00000    -0.00000     0.00001
+  Alpha Z     0.07842     0.07842     0.07842
+  Ewald      92.15555   135.88061  -103.67852    -0.00139    -0.00054    -1.04915
+  Hartree   220.11273   219.29555    80.51803     0.00008    -0.00010    -0.18678
+  E(xc)     -27.35144   -27.24502   -27.52562     0.00000    -0.00000    -0.00275
+  Local    -401.31513  -428.91129   -86.61981     0.00055     0.00047     0.90901
+  n-local   -26.04137   -25.48663   -25.46762     0.00013    -0.00000     0.00902
+  augment     6.30811     5.31789     7.75719     0.00001     0.00001     0.02279
+  Kinetic   149.15415   134.06143   168.43463    -0.00010     0.00016     0.30371
+  Fock      -13.56452   -13.58378   -13.56251     0.00003    -0.00000    -0.00010
+  vdW         0.00108     0.00113    -0.00000    -0.00000    -0.00000    -0.00002
   -------------------------------------------------------------------------------------
-  Total      -0.40420    -0.57006    -0.03888    -0.00212    -0.00001    -0.00278
-  in kB      -0.22518    -0.31758    -0.02166    -0.00118    -0.00001    -0.00155
-  external pressure =       -0.19 kB  Pullay stress =        0.00 kB
+  Total      -0.46242    -0.59169    -0.06582    -0.00069     0.00001     0.00574
+  in kB      -0.25907    -0.33150    -0.03688    -0.00039     0.00000     0.00321
+  external pressure =       -0.21 kB  Pullay stress =        0.00 kB
 
 
  VOLUME and BASIS-vectors are now :
  -----------------------------------------------------------------------------
   energy-cutoff  :      520.00
-  volume of cell :     2875.92
+  volume of cell :     2859.70
       direct lattice vectors                 reciprocal lattice vectors
-    10.237069764  0.000000000  0.000000000     0.097684203 -0.000000000  0.000000000
-     0.000000000 11.308341211  0.000000000     0.000000000  0.088430299  0.000000000
-     0.000000000  0.000000000 24.842918924     0.000000000  0.000000000  0.040252919
+    10.250982430  0.000000000  0.000000000     0.097551626 -0.000000000  0.000000000
+     0.000000000 11.253211329  0.000000000     0.000000000  0.088863523  0.000000000
+     0.000000000  0.000000000 24.790090512     0.000000000  0.000000000  0.040338699
 
   length of vectors
-    10.237069764 11.308341211 24.842918924     0.097684203  0.088430299  0.040252919
+    10.250982430 11.253211329 24.790090512     0.097551626  0.088863523  0.040338699
 
 
  FORCES acting on ions:
     Electron-Ion                     Ewald-Force                    Non-Local-Force
  -----------------------------------------------------------------------------------------------
-   -.513E+02 -.720E+02 -.422E+00   0.560E+02 0.785E+02 0.460E+00   -.476E+01 -.661E+01 -.391E-01
-   -.513E+02 0.720E+02 -.424E+00   0.560E+02 -.786E+02 0.462E+00   -.476E+01 0.661E+01 -.393E-01
-   0.621E+02 -.694E-02 0.514E+00   -.112E+03 0.127E-01 -.923E+00   0.441E+02 -.204E-02 0.363E+00
+   -.513E+02 -.718E+02 0.815E+00   0.560E+02 0.783E+02 -.888E+00   -.476E+01 -.658E+01 0.745E-01
+   -.513E+02 0.718E+02 0.814E+00   0.560E+02 -.783E+02 -.887E+00   -.476E+01 0.658E+01 0.744E-01
+   0.623E+02 -.205E-02 -.989E+00   -.112E+03 0.376E-02 0.177E+01   0.441E+02 -.512E-03 -.697E+00
  -----------------------------------------------------------------------------------------------
-   -.404E+02 0.155E-03 -.332E+00   0.000E+00 0.109E-15 0.000E+00   0.346E+02 -.933E-04 0.284E+00
+   -.404E+02 -.749E-04 0.640E+00   0.000E+00 0.102E-15 0.000E+00   0.346E+02 0.869E-04 -.549E+00
 
 
  POSITION                                       TOTAL-FORCE (eV/Angst)
  -----------------------------------------------------------------------------------
-      6.98733      6.42152     20.02310        -0.281102     -0.337402     -0.003072
-      6.98728      4.88687     20.02312        -0.278374      0.333864     -0.003061
-      6.39433      5.65416     20.01826         0.559476      0.003539      0.006133
+      7.05788      6.39339     19.99423        -0.310879     -0.358200      0.004291
+      7.05787      4.85984     19.99423        -0.309994      0.357042      0.004272
+      6.46285      5.62660     20.00360         0.620873      0.001158     -0.008563
  -----------------------------------------------------------------------------------
-    total drift:                               -0.013324      0.000000      0.002706
+    total drift:                               -0.010732      0.000012     -0.008031
 
 
 --------------------------------------------------------------------------------------------------------
@@ -447,50 +436,50 @@ Automatic generation of k-mesh.
 
   FREE ENERGIE OF THE ION-ELECTRON SYSTEM (eV)
   ---------------------------------------------------
-  free  energy   TOTEN  =       -17.48738628 eV
+  free  energy   TOTEN  =       -17.48414974 eV
 
-  energy  without entropy=      -17.48738628  energy(sigma->0) =      -17.48738628
+  energy  without entropy=      -17.48414974  energy(sigma->0) =      -17.48414974
 
-
-
---------------------------------------------------------------------------------------------------------
-
-
-    POTLOK:  cpu time      0.4358: real time      0.4358
 
 
 --------------------------------------------------------------------------------------------------------
 
 
-     LOOP+:  cpu time   3335.5032: real time   3338.4323
+    POTLOK:  cpu time      0.2940: real time      0.2940
+
+
+--------------------------------------------------------------------------------------------------------
+
+
+     LOOP+:  cpu time     45.7338: real time     45.7875
     4ORBIT:  cpu time      0.0000: real time      0.0000
 
- total amount of memory used by VASP MPI-rank0   367928. kBytes
+ total amount of memory used by VASP MPI-rank0    60418. kBytes
 =======================================================================
 
    base      :      30000. kBytes
-   nonl-proj :      26771. kBytes
-   fftplans  :      15318. kBytes
-   grid      :      12800. kBytes
-   one-center:          6. kBytes
-   HF        :          9. kBytes
-   nonlr-proj:        149. kBytes
-   wavefun   :       9459. kBytes
-   fock_wrk  :     273416. kBytes
+   nonl-proj :       3368. kBytes
+   fftplans  :       3075. kBytes
+   grid      :       3454. kBytes
+   one-center:          3. kBytes
+   HF        :          4. kBytes
+   nonlr-proj:        130. kBytes
+   wavefun   :       1182. kBytes
+   fock_wrk  :      19202. kBytes
 
   
   
  General timing and accounting informations for this job:
  ========================================================
   
-                  Total CPU time used (sec):     3423.516
-                            User time (sec):     3413.054
-                          System time (sec):       10.462
-                         Elapsed time (sec):     3440.249
+                  Total CPU time used (sec):       76.305
+                            User time (sec):       74.929
+                          System time (sec):        1.376
+                         Elapsed time (sec):       82.298
   
-                   Maximum memory used (kb):      993832.
+                   Maximum memory used (kb):      287952.
                    Average memory used (kb):          N/A
   
-                          Minor page faults:      1037464
-                          Major page faults:         1151
-                 Voluntary context switches:        23653
+                          Minor page faults:        80671
+                          Major page faults:          386
+                 Voluntary context switches:        10636

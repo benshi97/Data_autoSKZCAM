@@ -1,9 +1,8 @@
- vasp.6.3.0 20Jan22 (build Mar 11 2022 13:48:16) complex                        
-  
- executed on             LinuxIFC date 2024.01.22  05:08:36
- running on  304 total cores
- distrk:  each k-point on  304 cores,    1 groups
- distr:  one band on NCORE=   2 cores,  152 groups
+ vasp.6.3.0 20Jan22 (build Aug 21 2024 11:13:42) complex                         
+ executed on        HPECrayEX_GCC date 2024.11.26  21:48:19
+ running  512 mpi-ranks, with    1 threads/rank
+ distrk:  each k-point on  512 cores,    1 groups
+ distr:  one band on NCORE=  16 cores,   32 groups
 
 
 --------------------------------------------------------------------------------------------------------
@@ -13,7 +12,7 @@
    SYSTEM = TiO2
    ISMEAR = 0
    SIGMA = 0.05
-   EDIFF = 1E-5
+   EDIFF = 1E-4
    ALGO = ALL
    ISTART = 0
    IBRION = -1
@@ -36,35 +35,13 @@
    ISPIN = 1
    NELM = 200
    NELMIN = 8
-   NCORE = 2
+   NCORE = 16
    KPAR = 1
    LWAVE = .FALSE.
    LCHARG = .FALSE.
 
  POTCAR:    PAW_PBE C 08Apr2002                   
  POTCAR:    PAW_PBE H 15Jun2001                   
- -----------------------------------------------------------------------------
-|                                                                             |
-|           W    W    AA    RRRRR   N    N  II  N    N   GGGG   !!!           |
-|           W    W   A  A   R    R  NN   N  II  NN   N  G    G  !!!           |
-|           W    W  A    A  R    R  N N  N  II  N N  N  G       !!!           |
-|           W WW W  AAAAAA  RRRRR   N  N N  II  N  N N  G  GGG   !            |
-|           WW  WW  A    A  R   R   N   NN  II  N   NN  G    G                |
-|           W    W  A    A  R    R  N    N  II  N    N   GGGG   !!!           |
-|                                                                             |
-|     For optimal performance we recommend to set                             |
-|       NCORE = 2 up to number-of-cores-per-socket                            |
-|     NCORE specifies how many cores store one orbital (NPAR=cpu/NCORE).      |
-|     This setting can greatly improve the performance of VASP for DFT.       |
-|     The default, NCORE=1 might be grossly inefficient on modern             |
-|     multi-core architectures or massively parallel machines. Do your        |
-|     own testing! More info at https://www.vasp.at/wiki/index.php/NCORE      |
-|     Unfortunately you need to use the default for GW and RPA                |
-|     calculations (for HF NCORE is supported but not extensively tested      |
-|     yet).                                                                   |
-|                                                                             |
- -----------------------------------------------------------------------------
-
  POTCAR:    PAW_PBE C 08Apr2002                   
    SHA256 =  253f7b50bb8d59471dbedb8285d89021f4a42ed1a2c5d38a03a736e69125dd95 C/POTCAR              
    COPYR  = (c) Copyright 08Apr2002 Georg Kresse                                                    
@@ -119,10 +96,10 @@
   non local Contribution for L=           1  read in
     real space projection operators read in
     PAW grid and wavefunctions read in
- 
+
    number of l-projection  operators is LMAX  =           4
    number of lm-projection operators is LMMAX =           8
- 
+
  POTCAR:    PAW_PBE H 15Jun2001                   
    SHA256 =  030f79b5d3ab3cf0e668861823c8fb652ff669f3e15e46930bd03bfd63a607b6 H/POTCAR              
    COPYR  = (c) Copyright 15Jun2001 Georg Kresse                                                    
@@ -168,10 +145,10 @@
   non local Contribution for L=           1  read in
     real space projection operators read in
     PAW grid and wavefunctions read in
- 
+
    number of l-projection  operators is LMAX  =           3
    number of lm-projection operators is LMMAX =           5
- 
+
  -----------------------------------------------------------------------------
 |                                                                             |
 |               ----> ADVICE to this user running VASP <----                  |
@@ -188,8 +165,8 @@
   PAW_PBE H 15Jun2001                   :
  energy of atom  2       EATOM=  -12.4884
  kinetic energy error for atom=    0.0004 (will be added to EATOM!!)
- 
- 
+
+
  POSCAR:  C  H
   positions in direct lattice
   No initial velocities read in
@@ -214,19 +191,19 @@
  exchange correlation table for  LEXCH =       40
    RHO(1)=    0.500       N(1)  =     2000
    RHO(2)=  100.500       N(2)  =     4000
- 
+
 
 
 --------------------------------------------------------------------------------------------------------
 
 
  ion  position               nearest neighbor table
-   1  0.500  0.500  0.813-   2 1.10   3 1.10   4 1.10   5 1.10
-   2  0.496  0.576  0.833-   1 1.10
-   3  0.504  0.424  0.833-   1 1.10
-   4  0.571  0.504  0.793-   1 1.10
-   5  0.430  0.496  0.793-   1 1.10
- 
+   1  0.500  0.500  0.812-   3 1.10   2 1.10   5 1.10   4 1.10
+   2  0.496  0.576  0.832-   1 1.10
+   3  0.504  0.424  0.832-   1 1.10
+   4  0.571  0.504  0.792-   1 1.10
+   5  0.429  0.496  0.792-   1 1.10
+
 
 IMPORTANT INFORMATION: All symmetrisations will be switched off!
 NOSYMM: (Re-)initialisation of all symmetry stuff for point group C_1.
@@ -236,22 +213,22 @@ NOSYMM: (Re-)initialisation of all symmetry stuff for point group C_1.
 
                                      Primitive cell                                     
 
-  volume of cell :    4700.2961
+  volume of cell :    4700.2642
 
   direct lattice vectors                    reciprocal lattice vectors
-    13.003980404  0.000000000  0.000000000     0.076899531  0.000000000  0.000000000
-     0.000000000 11.830378115  0.000000000     0.000000000  0.084528152  0.000000000
-     0.000000000  0.000000000 30.552748813     0.000000000  0.000000000  0.032730279
+    13.003962940  0.000000000  0.000000000     0.076899635  0.000000000  0.000000000
+     0.000000000 11.830322230  0.000000000     0.000000000  0.084528551  0.000000000
+     0.000000000  0.000000000 30.552726600     0.000000000  0.000000000  0.032730303
 
   length of vectors
-    13.003980404 11.830378115 30.552748813     0.076899531  0.084528152  0.032730279
+    13.003962940 11.830322230 30.552726600     0.076899635  0.084528551  0.032730303
 
   position of ions in fractional coordinates (direct lattice)
-     0.500064745  0.500001964  0.812552324
-     0.496116017  0.575765146  0.833149304
-     0.504021047  0.424236385  0.833153143
-     0.570575337  0.504286174  0.792850438
-     0.429538212  0.495704170  0.792857062
+     0.500054181  0.499991615  0.811837592
+     0.496254990  0.575800755  0.832419822
+     0.503869532  0.424210026  0.832421078
+     0.570623675  0.504129207  0.792162233
+     0.429483306  0.495863185  0.792169603
 
   ion indices of the primitive-cell ions
    primitive index   ion index
@@ -263,8 +240,8 @@ NOSYMM: (Re-)initialisation of all symmetry stuff for point group C_1.
 
 ----------------------------------------------------------------------------------------
 
- 
- 
+
+
  KPOINTS: pymatgen v2020.8.13 with grid density = 
 
 Automatic generation of k-mesh.
@@ -274,12 +251,12 @@ Automatic generation of k-mesh.
  Generating k-lattice:
 
   Cartesian coordinates                     Fractional coordinates (reciprocal lattice)
-     0.038449766  0.000000000  0.000000000     0.500000000  0.000000000  0.000000000
-     0.000000000  0.042264076  0.000000000     0.000000000  0.500000000  0.000000000
-     0.000000000  0.000000000  0.032730279     0.000000000  0.000000000  1.000000000
+     0.038449817  0.000000000  0.000000000     0.500000000  0.000000000  0.000000000
+     0.000000000  0.042264276  0.000000000     0.000000000  0.500000000  0.000000000
+     0.000000000  0.000000000  0.032730303     0.000000000  0.000000000  1.000000000
 
   Length of vectors
-     0.038449766  0.042264076  0.032730279
+     0.038449817  0.042264276  0.032730303
 
   Shift w.r.t. Gamma in fractional coordinates (k-lattice)
      0.000000000  0.000000000  0.000000000
@@ -312,7 +289,7 @@ Automatic generation of k-mesh.
 
 
  Dimension of arrays:
-   k-points           NKPTS =      4   k-points in BZ     NKDIM =      4   number of bands    NBANDS=    152
+   k-points           NKPTS =      4   k-points in BZ     NKDIM =      4   number of bands    NBANDS=     32
    number of dos      NEDOS =    301   number of ions     NIONS =      5
    non local maximal  LDIM  =      4   non local SUM 2l+1 LMDIM =      8
    total plane-waves  NPLWV = ******
@@ -331,43 +308,43 @@ Automatic generation of k-mesh.
 
 
   energy-cutoff  :      600.00
-  volume of cell :     4700.30
+  volume of cell :     4700.26
       direct lattice vectors                 reciprocal lattice vectors
-    13.003980404  0.000000000  0.000000000     0.076899531  0.000000000  0.000000000
-     0.000000000 11.830378115  0.000000000     0.000000000  0.084528152  0.000000000
-     0.000000000  0.000000000 30.552748813     0.000000000  0.000000000  0.032730279
+    13.003962940  0.000000000  0.000000000     0.076899635  0.000000000  0.000000000
+     0.000000000 11.830322230  0.000000000     0.000000000  0.084528551  0.000000000
+     0.000000000  0.000000000 30.552726600     0.000000000  0.000000000  0.032730303
 
   length of vectors
-    13.003980404 11.830378115 30.552748813     0.076899531  0.084528152  0.032730279
+    13.003962940 11.830322230 30.552726600     0.076899635  0.084528551  0.032730303
 
 
- 
+
  k-points in units of 2pi/SCALE and weight: pymatgen v2020.8.13 with grid density = 
    0.00000000  0.00000000  0.00000000       0.250
-   0.03844977  0.00000000  0.00000000       0.250
-   0.00000000  0.04226408  0.00000000       0.250
-   0.03844977  0.04226408  0.00000000       0.250
- 
+   0.03844982  0.00000000  0.00000000       0.250
+   0.00000000  0.04226428  0.00000000       0.250
+   0.03844982  0.04226428  0.00000000       0.250
+
  k-points in reciprocal lattice and weights: pymatgen v2020.8.13 with grid density = 
    0.00000000  0.00000000  0.00000000       0.250
    0.50000000  0.00000000  0.00000000       0.250
    0.00000000  0.50000000  0.00000000       0.250
    0.50000000  0.50000000  0.00000000       0.250
- 
+
  position of ions in fractional coordinates (direct lattice) 
-   0.50006475  0.50000196  0.81255232
-   0.49611602  0.57576515  0.83314930
-   0.50402105  0.42423638  0.83315314
-   0.57057534  0.50428617  0.79285044
-   0.42953821  0.49570417  0.79285706
- 
+   0.50005418  0.49999162  0.81183759
+   0.49625499  0.57580076  0.83241982
+   0.50386953  0.42421003  0.83242108
+   0.57062368  0.50412921  0.79216223
+   0.42948331  0.49586318  0.79216960
+
  position of ions in cartesian coordinates  (Angst):
-   6.50283215  5.91521229 24.82570704
-   6.45148297  6.81151938 25.45500142
-   6.55427982  5.01887684 25.45511869
-   7.41975050  5.96589612 24.22376029
-   5.58570650  5.86436777 24.22396265
- 
+   6.50268603  5.91506192 24.80385198
+   6.45328149  6.81190848 25.43269524
+   6.55230073  5.01854130 25.43273362
+   7.42036913  5.96401096 24.20271612
+   5.58498499  5.86622126 24.20294132
+
 
 
 --------------------------------------------------------------------------------------------------------
@@ -410,55 +387,55 @@ Automatic generation of k-mesh.
   Direction    XX          YY          ZZ          XY          YZ          ZX
   --------------------------------------------------------------------------------------
   Alpha Z     0.05154     0.05154     0.05154
-  Ewald     108.80604   114.41078   -13.59029     0.01606     0.00444    -0.00466
-  Hartree   157.52419   165.25219    41.84739     0.00271     0.00004    -0.00034
-  E(xc)     -27.43716   -27.45902   -27.49381     0.00013    -0.00000    -0.00001
-  Local    -324.29576  -338.16290   -87.61662    -0.01653    -0.00285     0.00351
-  n-local   -15.43469   -15.48274   -15.46881     0.00244    -0.00013     0.00011
-  augment     0.13540     0.13856     0.14448    -0.00001    -0.00002     0.00001
-  Kinetic   100.23837   101.17554   102.43920    -0.00953    -0.00014     0.00040
+  Ewald     108.90554   114.47587   -13.74772     0.01541    -0.01115     0.00543
+  Hartree   157.55738   165.27370    41.80446     0.00270    -0.00013    -0.00010
+  E(xc)     -27.43814   -27.46031   -27.49656     0.00013     0.00000    -0.00001
+  Local    -324.41548  -338.23999   -87.44489    -0.01609     0.00721    -0.00324
+  n-local   -15.43479   -15.48375   -15.46952     0.00241     0.00035    -0.00019
+  augment     0.13554     0.13870     0.14523    -0.00002     0.00004    -0.00002
+  Kinetic   100.21613   101.16524   102.48337    -0.00931     0.00031    -0.00002
   Fock        0.00000     0.00000     0.00000     0.00000     0.00000     0.00000
-  vdW         0.00015     0.00010     0.00030    -0.00000     0.00000    -0.00000
+  vdW         0.00014     0.00010     0.00030    -0.00000    -0.00000     0.00000
   -------------------------------------------------------------------------------------
-  Total      -0.41194    -0.07595     0.31338    -0.00473     0.00134    -0.00097
-  in kB      -0.14042    -0.02589     0.10682    -0.00161     0.00046    -0.00033
+  Total      -0.42215    -0.07890     0.32621    -0.00477    -0.00336     0.00185
+  in kB      -0.14390    -0.02689     0.11120    -0.00163    -0.00114     0.00063
   external pressure =       -0.02 kB  Pullay stress =        0.00 kB
 
 
  VOLUME and BASIS-vectors are now :
  -----------------------------------------------------------------------------
   energy-cutoff  :      600.00
-  volume of cell :     4700.30
+  volume of cell :     4700.26
       direct lattice vectors                 reciprocal lattice vectors
-    13.003980404  0.000000000  0.000000000     0.076899531  0.000000000  0.000000000
-     0.000000000 11.830378115  0.000000000     0.000000000  0.084528152  0.000000000
-     0.000000000  0.000000000 30.552748813     0.000000000  0.000000000  0.032730279
+    13.003962940  0.000000000  0.000000000     0.076899635  0.000000000  0.000000000
+     0.000000000 11.830322230  0.000000000     0.000000000  0.084528551  0.000000000
+     0.000000000  0.000000000 30.552726600     0.000000000  0.000000000  0.032730303
 
   length of vectors
-    13.003980404 11.830378115 30.552748813     0.076899531  0.084528152  0.032730279
+    13.003962940 11.830322230 30.552726600     0.076899635  0.084528551  0.032730303
 
 
  FORCES acting on ions:
     Electron-Ion                     Ewald-Force                    Non-Local-Force
  -----------------------------------------------------------------------------------------------
-   0.152E-02 0.131E-02 0.250E+01   -.230E-02 -.241E-02 -.265E+01   -.102E-02 -.172E-02 0.328E+00
-   0.249E+01 -.434E+02 -.307E+02   -.274E+01 0.479E+02 0.340E+02   0.260E+00 -.451E+01 -.314E+01
-   -.250E+01 0.434E+02 -.307E+02   0.275E+01 -.479E+02 0.340E+02   -.261E+00 0.451E+01 -.314E+01
-   -.442E+02 -.244E+01 0.295E+02   0.486E+02 0.269E+01 -.326E+02   -.462E+01 -.254E+00 0.296E+01
-   0.442E+02 0.245E+01 0.295E+02   -.486E+02 -.270E+01 -.326E+02   0.462E+01 0.254E+00 0.296E+01
+   -.139E-02 -.422E-02 0.254E+01   0.256E-02 0.698E-02 -.269E+01   0.173E-02 0.402E-02 0.331E+00
+   0.240E+01 -.434E+02 -.307E+02   -.264E+01 0.479E+02 0.339E+02   0.250E+00 -.451E+01 -.314E+01
+   -.241E+01 0.434E+02 -.307E+02   0.265E+01 -.480E+02 0.339E+02   -.252E+00 0.452E+01 -.314E+01
+   -.442E+02 -.236E+01 0.294E+02   0.487E+02 0.260E+01 -.326E+02   -.462E+01 -.245E+00 0.295E+01
+   0.443E+02 0.235E+01 0.294E+02   -.487E+02 -.259E+01 -.326E+02   0.462E+01 0.244E+00 0.295E+01
  -----------------------------------------------------------------------------------------------
-   0.151E-02 0.231E-02 0.406E-01   0.000E+00 0.444E-15 0.000E+00   -.150E-02 -.232E-02 -.405E-01
- 
- 
+   -.235E-02 -.561E-02 0.436E-01   -.711E-14 0.000E+00 0.711E-14   0.235E-02 0.560E-02 -.437E-01
+
+
  POSITION                                       TOTAL-FORCE (eV/Angst)
  -----------------------------------------------------------------------------------
-      6.50283      5.91521     24.82571        -0.001791     -0.002806      0.177919
-      6.45148      6.81152     25.45500         0.008633     -0.013275      0.104380
-      6.55428      5.01888     25.45512        -0.008576      0.015736      0.102859
-      7.41975      5.96590     24.22376        -0.195997     -0.003175     -0.193094
-      5.58571      5.86437     24.22396         0.197731      0.003521     -0.192063
+      6.50269      5.91506     24.80385         0.002876      0.006728      0.177510
+      6.45328      6.81191     25.43270         0.008403     -0.017843      0.108070
+      6.55230      5.01854     25.43273        -0.008338      0.011817      0.111929
+      7.42037      5.96401     24.20272        -0.202970     -0.003735     -0.197863
+      5.58498      5.86622     24.20294         0.200029      0.003033     -0.199645
  -----------------------------------------------------------------------------------
-    total drift:                                0.000010     -0.000008      0.000107
+    total drift:                                0.000004     -0.000005     -0.000172
 
 
 --------------------------------------------------------------------------------------------------------
@@ -467,47 +444,47 @@ Automatic generation of k-mesh.
 
   FREE ENERGIE OF THE ION-ELECTRON SYSTEM (eV)
   ---------------------------------------------------
-  free  energy   TOTEN  =       -24.17065439 eV
+  free  energy   TOTEN  =       -24.16997433 eV
 
-  energy  without entropy=      -24.17065439  energy(sigma->0) =      -24.17065439
- 
+  energy  without entropy=      -24.16997433  energy(sigma->0) =      -24.16997433
 
-
---------------------------------------------------------------------------------------------------------
-
-
-    POTLOK:  cpu time      0.0981: real time      0.0983
 
 
 --------------------------------------------------------------------------------------------------------
 
 
-     LOOP+:  cpu time     31.8954: real time     32.0796
+    POTLOK:  cpu time      0.1683: real time      0.1684
+
+
+--------------------------------------------------------------------------------------------------------
+
+
+     LOOP+:  cpu time     24.9190: real time     24.9691
     4ORBIT:  cpu time      0.0000: real time      0.0000
 
- total amount of memory used by VASP MPI-rank0   190446. kBytes
+ total amount of memory used by VASP MPI-rank0    57777. kBytes
 =======================================================================
 
    base      :      30000. kBytes
-   nonl-proj :      46521. kBytes
-   fftplans  :      41485. kBytes
-   grid      :      57314. kBytes
-   one-center:          9. kBytes
-   wavefun   :      15117. kBytes
- 
+   nonl-proj :       5815. kBytes
+   fftplans  :       7947. kBytes
+   grid      :      12122. kBytes
+   one-center:          3. kBytes
+   wavefun   :       1890. kBytes
+
   
   
  General timing and accounting informations for this job:
  ========================================================
   
-                  Total CPU time used (sec):       37.738
-                            User time (sec):       37.078
-                          System time (sec):        0.660
-                         Elapsed time (sec):       38.803
+                  Total CPU time used (sec):       57.566
+                            User time (sec):       56.666
+                          System time (sec):        0.900
+                         Elapsed time (sec):       71.306
   
-                   Maximum memory used (kb):      435132.
+                   Maximum memory used (kb):      192392.
                    Average memory used (kb):          N/A
   
-                          Minor page faults:        48132
-                          Major page faults:          112
-                 Voluntary context switches:         2079
+                          Minor page faults:        22359
+                          Major page faults:          745
+                 Voluntary context switches:        10668
