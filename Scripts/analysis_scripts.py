@@ -231,7 +231,8 @@ def calculate_ezpv_etherm(
         filepath: str,
         structures: list[str],
         temperature: float,
-        num_monomers: int = 1
+        num_monomers: int = 1,
+        filename: str = 'OUTCAR'
 ):
     """
     Calculate the zero-point energy and thermal energy given a set of paths to the VASP OUTCAR files of a molecule
@@ -246,6 +247,9 @@ def calculate_ezpv_etherm(
     temperature : float
         Temperature in Kelvin.
     num_monomers : int
+        The number of monomers in the cluster.
+    filename : str
+        The name of the OUTCAR file.
 
     Returns
     -------
@@ -262,7 +266,7 @@ def calculate_ezpv_etherm(
     energy_dict = {structure: {'E_ZPV': 0.0, 'E_therm': 0.0} for structure in structures + ['Hads']}
 
     for structure in structures:
-        real_freqs, imag_freqs = read_vib_freq(f'{filepath}/{structure}/OUTCAR') # Adsorbate on Slab
+        real_freqs, imag_freqs = read_vib_freq(f'{filepath}/{structure}/{filename}') # Adsorbate on Slab
         # Calculate thermal and zero-point corrections as well as RT term for adsorbate and adsorbate on slab
         total_energy, ethermal, ezpv, kT = get_quasi_rrho(real_freqs, imag_freqs, temperature)
         energy_dict[structure]['E_ZPV'] = ezpv
