@@ -6,6 +6,7 @@
 import numpy as np
 from datetime import datetime
 import pandas as pd
+import re
 
 # Define units
 kB = 8.617330337217213e-05
@@ -22,6 +23,42 @@ hundredcm1 = 100 * cm1_to_eV * 1000
 kcalmol_to_meV = kcal / mol * 1000
 kjmol_to_meV = kJ / mol * 1000
 mha_to_meV = Hartree
+
+def read_outcar_unit_cell(filename):
+    """
+    Read lattice parameters from a VASP OUTCAR file.
+    
+    Parameters
+    ----------
+    filename : str
+        The name of the file to read lattice parameters from.
+        
+    Returns
+    -------
+    float
+        3x3 numpy array of unit cell parameters.
+    """
+
+    # Read the OUTCAR file
+    with open(filename, "r") as f:
+        lines = f.readlines()
+
+    # Find the line with the lattice parameters
+    for i, line in enumerate(lines):
+        if "Lattice vectors" in line:
+            unit_cell_parameters_str = lines[i + 2 : i + 5]
+            break
+
+    # Convert the lattice parameters to a 3x3 numpy array
+    unit_cell_parameters = np.array(
+        [
+            [float(x[:-1]) for x in line.split()[3:]]
+            for line in unit_cell_parameters_str
+        ]
+    )
+
+    return unit_cell_parameters
+
 
 # Getting the cost of the DFT calculations
 def get_vasp_walltime(filename):
