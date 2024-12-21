@@ -4,13 +4,16 @@
 # Description: Contains functions for reading and plotting data from MRCC, ORCA and VASP calculations.
 
 import numpy as np
-from ase import units
-from scipy.stats import linregress
 from datetime import datetime
-from ase.units import mol, kcal, kJ, Hartree, Bohr
 import pandas as pd
-from ase import io
-import re
+
+# Define units
+kB = 8.617330337217213e-05
+mol = 6.022140857e+23
+kcal = 2.611447418269555e+22
+kJ = 6.241509125883258e+21
+Hartree = 27.211386024367243
+Bohr = 0.5291772105638411
 
 
 # Some basic conversion factors
@@ -211,7 +214,7 @@ def get_quasi_rrho(r_freq, i_freq, T):
         The product of Boltzmann constant (kB) and temperature (kT) in eV.
     """
 
-    k = units.kB  # Boltzmann constant
+    k = kB  # Boltzmann constant
     combined_freq = r_freq + [0.0001] * len(i_freq)  # Combine real and imaginary frequencies
     kT = k * T * 1000  # Calculate kT in eV
 
