@@ -253,7 +253,7 @@ def get_quasi_rrho(r_freq, i_freq, T):
 
     k = kB  # Boltzmann constant
     combined_freq = r_freq + [0.0001] * len(i_freq)  # Combine real and imaginary frequencies
-    kT = k * T * 1000  # Calculate kT in eV
+    kT = k * T * 1000  # Calculate kT in meV
 
     dU = 0  # Initialize total energy change
     zpe = 0.0  # Initialize zero-point energy correction
