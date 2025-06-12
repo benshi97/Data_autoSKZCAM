@@ -9,11 +9,11 @@ The data for plotting all of the graphs in the main text and supplemental materi
 
 ## Paper abstract
 
-Quantum-mechanical simulations can provide atomic-level insights into chemical processes on surfaces, which is crucial for the rational design of new catalytic processes as well as materials to store energy and mitigate greenhouse gases.
+Quantum-mechanical simulations can offer atomic-level insights into chemical processes on surfaces that are crucial towards advancing applications in heterogeneous catalysis, energy storage and greenhouse gas sequestration.
 However, achieving the accuracy needed for reliable predictions has proven challenging.
-Density functional theory (DFT), the workhorse quantum-mechanical method, can often lead to inconsistent predictions, necessitating accurate methods from correlated wave-function theory (cWFT).
-However, the high computational demands and significant user intervention associated with cWFT have traditionally made it impractical to carry out for surfaces.
-In this work, we address this challenge, presenting an automated framework which leverages multilevel embedding approaches, to apply accurate cWFT methods to ionic surfaces with computational costs approaching DFT.
+Density functional theory (DFT), widely used for its efficiency, can be inconsistent, necessitating accurate methods from correlated wave-function theory (cWFT).
+However, high computational demands and significant user intervention have traditionally made cWFT impractical to carry out for surfaces.
+Here, we present an automated framework that leverages multilevel embedding approaches to apply cWFT to the surfaces of ionic materials with computational costs approaching DFT.
 With this framework, we have reproduced experimental adsorption enthalpies for a diverse set of 19 adsorbate--surface systems.
-Moreover, we resolve long-standing debates on the adsorption configuration of several systems, while offering valuable benchmarks to assess DFT.
-This framework is completely open-source, making it possible to now routinely apply cWFT to complex problems in ionic surface chemistry.
+We further resolve debates on the adsorption configuration of several systems, while offering  benchmarks to assess DFT.
+This framework is  open-source, facilitating the routine application of cWFT to complex problems involving the surfaces of ionic materials.
