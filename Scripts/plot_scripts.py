@@ -30,10 +30,8 @@ def textrue_import():
             r"\usepackage{amsmath}",            # load additional packages
             r"\usepackage{amssymb}",   # unicode math setup
             r"\usepackage[mathrm=sym]{unicode-math}",  # serif font via preamble
-            r"\setmathfont{FiraMath-Regular.otf}",
-            r"\setmainfont[BoldFont={FiraSans-SemiBold.otf}]{FiraSans-Regular.otf}",
-            r"\setmathfont[version=bold]{FiraMath-Bold.otf}",
-            r"\newcommand{\minus}{\scalebox{0.5}[1.0]{$-$}}" # serif font via preamble
+            r"\setmathfont[BoldFont={FiraSans-SemiBold.otf}]{FiraMath-Regular.otf}",
+            r"\setmainfont[BoldFont={FiraSans-SemiBold.otf}]{FiraSans-Regular.otf}"
         ])
     })
 
